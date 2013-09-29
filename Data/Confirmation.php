@@ -94,6 +94,71 @@ EOD;
         }
     }
 
+    /**
+     * Return the column names of the table
+     *
+     * @throws \Exception
+     * @return multitype:unknown
+     */
+    public function getColumns()
+    {
+        try {
+            $result = $this->app['db']->fetchAll("SHOW COLUMNS FROM `".self::$table_name."`");
+            $columns = array();
+            foreach ($result as $column) {
+                $columns[] = $column['Field'];
+            }
+            return $columns;
+        } catch (\Doctrine\DBAL\DBALException $e) {
+            throw new \Exception($e);
+        }
+    }
+
+    /**
+     * Count the records in the table
+     *
+     * @param array $status flags, i.e. array('ACTIVE','LOCKED')
+     * @throws \Exception
+     * @return integer number of records
+     */
+    public function count($status=null)
+    {
+        try {
+            $SQL = "SELECT COUNT(*) FROM `".self::$table_name."`";
+            if (is_array($status) && !empty($status)) {
+                $SQL .= " WHERE ";
+                $use_status = false;
+                if (is_array($status) && !empty($status)) {
+                    $use_status = true;
+                    $SQL .= '(';
+                    $start = true;
+                    foreach ($status as $stat) {
+                        if (!$start) {
+                            $SQL .= " OR ";
+                        }
+                        else {
+                            $start = false;
+                        }
+                        $SQL .= "`status`='$stat'";
+                    }
+                    $SQL .= ')';
+                }
+            }
+            return $this->app['db']->fetchColumn($SQL);
+        } catch (\Doctrine\DBAL\DBALException $e) {
+            throw new \Exception($e);
+        }
+    }
+
+
+    /**
+     * Calculate the checksum for the given data record
+     *
+     * @param array $data
+     * @throws \InvalidArgumentException
+     * @throws \Exception
+     * @return string
+     */
     public function calculateChecksum($data)
     {
         if (!is_array($data)) {
@@ -163,6 +228,13 @@ EOD;
         }
     }
 
+    /**
+     * Get the checksum from table for the given ID
+     *
+     * @param integer $id
+     * @throws \Exception
+     * @return Ambigous <boolean, unknown>
+     */
     public function getChecksum($id)
     {
         try {
@@ -174,6 +246,13 @@ EOD;
         }
     }
 
+    /**
+     * Select the record with the given ID
+     *
+     * @param integer $id
+     * @throws \Exception
+     * @return multitype:unknown |boolean
+     */
     public function select($id)
     {
         try {
@@ -194,10 +273,72 @@ EOD;
         }
     }
 
+    /**
+     * Delete the record with the given ID physically
+     *
+     * @param integer $id
+     * @throws \Exception
+     */
     public function delete($id)
     {
         try {
             $this->app['db']->delete(self::$table_name, array('id' => $id));
+        } catch (\Doctrine\DBAL\DBALException $e) {
+            throw new \Exception($e);
+        }
+    }
+
+    /**
+     * Select a list from table ConfirmationLog in paging view
+     *
+     * @param integer $limit_from start selection at position
+     * @param integer $rows_per_page select max. rows per page
+     * @param array $select_status tags, i.e. array('PENDING','SUBMITTED')
+     * @param array $order_by fields to order by
+     * @param string $order_direction 'ASC' (default) or 'DESC'
+     * @throws \Exception
+     * @return array selected records
+     */
+    public function selectList($limit_from, $rows_per_page, $select_status=null, $order_by=null, $order_direction='ASC')
+    {
+        try {
+            $SQL = "SELECT * FROM `".self::$table_name."`";
+            if (is_array($select_status) && !empty($select_status)) {
+                $SQL .= " WHERE (";
+                $use_status = false;
+                if (is_array($select_status) && !empty($select_status)) {
+                    $use_status = true;
+                    $SQL .= '(';
+                    $start = true;
+                    foreach ($select_status as $stat) {
+                        if (!$start) {
+                            $SQL .= " OR ";
+                        }
+                        else {
+                            $start = false;
+                        }
+                        $SQL .= "`status`='$stat'";
+                    }
+                    $SQL .= ')';
+                }
+                $SQL .= ")";
+            }
+            if (is_array($order_by) && !empty($order_by)) {
+                $SQL .= " ORDER BY ";
+                $start = true;
+                foreach ($order_by as $by) {
+                    if (!$start) {
+                        $SQL .= ", ";
+                    }
+                    else {
+                        $start = false;
+                    }
+                    $SQL .= "`$by`";
+                }
+                $SQL .= " $order_direction";
+            }
+            $SQL .= " LIMIT $limit_from, $rows_per_page";
+            return $this->app['db']->fetchAll($SQL);
         } catch (\Doctrine\DBAL\DBALException $e) {
             throw new \Exception($e);
         }

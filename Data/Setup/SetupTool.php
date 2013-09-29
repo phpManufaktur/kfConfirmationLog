@@ -51,7 +51,7 @@ class SetupTool
                 'license' => $extension['license'],
                 'platform' => (CMS_TYPE == 'WebsiteBaker') ? '2.8.x' : '1.x',
                 'type' => 'module',
-                'function' => 'tool'
+                'function' => 'tool',
             );
 
             if (CMS_TYPE == 'WebsiteBaker') {
@@ -70,8 +70,7 @@ class SetupTool
             if (CMS_TYPE == 'WebsiteBaker') {
                 $data['guid'] =  isset($extension['guid']) ? $extension['guid'] : '';
             }
-
-            $data['EXTENSION_ROUTE'] = '/test'; //$extension_route;
+            $data['css_url'] = CMS_URL.'/syncdata/vendor/phpManufaktur/ConfirmationLog/Template/default/backend/css/syncdata.backend.css';
 
             if (!file_exists(CMS_PATH.'/modules/'.$data['directory']) &&
                 !@mkdir(CMS_PATH.'/modules/'.$data['directory'])) {
@@ -86,13 +85,13 @@ class SetupTool
             }
 
             // generate files
-            $files = array('index', 'info', 'tool', 'install', 'uninstall');
+            $files = array('index.php', 'info.php', 'tool.php', 'install.php', 'uninstall.php', 'backend.css');
 
             foreach ($files as $file) {
                 // loop through the files, replace content and write them to the desired /modules directory
                 if (file_exists(MANUFAKTUR_PATH."/ConfirmationLog/Template/default/cms/setup/websitebaker/{$file}.htt")) {
                     $content = file_get_contents(MANUFAKTUR_PATH."/ConfirmationLog/Template/default/cms/setup/websitebaker/{$file}.htt");
-                    file_put_contents(CMS_PATH.'/modules/'.$data['directory'].'/'.$file.'.php', str_ireplace($search, $replace, $content));
+                    file_put_contents(CMS_PATH.'/modules/'.$data['directory'].'/'.$file, str_ireplace($search, $replace, $content));
                 }
             }
 

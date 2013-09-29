@@ -11,13 +11,15 @@
 
 namespace phpManufaktur\ConfirmationLog\Control\Backend;
 
+use phpManufaktur\ConfirmationLog\Data\Confirmation;
 
 class Backend {
 
     protected $app = null;
     protected static $usage = null;
-    protected static $usage_param = null;
     protected static $message = '';
+    protected static $link = null;
+    protected $ConfirmationData = null;
 
     /**
      * Constructor
@@ -32,14 +34,16 @@ class Backend {
      * Initialize the class with the needed parameters
      *
      * @param Application $app
+     * @todo route for kitFramework is not defined!
      */
     protected function initialize($app)
     {
         $this->app = $app;
         if (defined('SYNCDATA_PATH')) {
             // executed from SyncData installation
-            self::$usage = CMS_TYPE;
+            self::$usage = 'SyncData';
             $app['translator']->setLocale(strtolower(LANGUAGE));
+            self::$link = CMS_ADMIN_URL.'/admintools/tool.php?tool=kit_framework_confirmationlog';
         }
         else {
             // executed from kitFramework installation
@@ -48,9 +52,11 @@ class Backend {
             if (self::$usage != 'framework') {
                 $app['translator']->setLocale($this->app['session']->get('CMS_LOCALE', 'en'));
             }
+            self::$link = null;
         }
-        self::$usage_param = (self::$usage != 'framework') ? '?usage='.self::$usage : '';
 
+        // init Confirmation Data
+        $this->ConfirmationData = new Confirmation($app);
     }
 
     /**
@@ -59,14 +65,27 @@ class Backend {
      * @param string $active dialog
      * @return multitype:multitype:string boolean
      */
-    public function getToolbar($active) {
+    public function getToolbar($active)
+    {
         $toolbar_array = array(
-            'event_list' => array(
-                'text' => 'Event list',
-                'hint' => 'List of all active events',
-                'link' => FRAMEWORK_URL.'/admin/event/list'.self::$usage_param,
-                'active' => ($active == 'event_list')
+            'list' => array(
+                'text' => 'List',
+                'hint' => 'List of confirmations',
+                'link' => self::$link.'&action=list&usage='.self::$usage,
+                'active' => ($active == 'list')
             ),
+            'import' => array(
+                'text' => 'Import',
+                'hint' => 'Import of data records',
+                'link' => self::$link.'&action=import&usage='.self::$usage,
+                'active' => ($active == 'import')
+            ),
+            'about' => array(
+                'text' => 'About',
+                'hint' => 'About the ConfirmationLog',
+                'link' => self::$link.'&action=about&usage='.self::$usage,
+                'active' => ($active == 'about')
+            )
         );
         return $toolbar_array;
     }
@@ -101,5 +120,32 @@ class Backend {
     public function isMessage()
     {
         return !empty(self::$message);
+    }
+
+    /**
+     * Return the GET paramter depending from the usage with different methods
+     *
+     * @param string $parameter_name
+     * @param string $default_value default NULL
+     * @return Ambigous <unknown, string>
+     */
+    protected function getParameter($parameter_name, $default_value=null)
+    {
+        if (self::$usage == 'SyncData') {
+            return (isset($_GET[$parameter_name])) ? $_GET[$parameter_name] : $default_value;
+        }
+        else {
+            return $this->app['request']->get($parameter_name, $default_value);
+        }
+    }
+
+    protected function removeParameter($parameter_name)
+    {
+        if (self::$usage == 'SyncData') {
+            unset($_GET[$parameter_name]);
+        }
+        else {
+            $this->app['request']->remove($parameter_name);
+        }
     }
  }

@@ -52,6 +52,7 @@ class ImportOldLog
                     'second_id' => $old['second_id'],
                     'installation_name' => $old['installation_name'],
                     'page_url' => $old['page_link'],
+                    'page_title' => $old['page_title'],
                     'typed_name' => $old['typed_name'],
                     'typed_email' => $old['typed_email'],
                     'confirmed_at' => $old['confirmed_at'],

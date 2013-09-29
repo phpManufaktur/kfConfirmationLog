@@ -14,11 +14,27 @@ namespace phpManufaktur\ConfirmationLog\Control\Backend;
 class SyncDataControl extends Backend
 {
 
-
     public function exec($app)
     {
         $this->initialize($app);
-        $this->setMessage('Check it');
-        return $this->getMessage();
+
+        $action = isset($_GET['action']) ? $_GET['action'] : 'list';
+
+        switch ($action) {
+            case 'about':
+                $About = new About();
+                return $About->controllerAbout($app);
+            case 'import':
+                $Import = new Import();
+                return $Import->controllerImport($app);
+            case 'detail':
+                $Detail = new Detail();
+                return $Detail->controllerDetail($app);
+            case 'list':
+            default:
+                $ShowList = new ShowList();
+                return $ShowList->controllerList($app);
+        }
+
     }
 }
