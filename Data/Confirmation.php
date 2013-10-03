@@ -367,6 +367,14 @@ EOD;
         }
     }
 
+    /**
+     * Check wether the given installation name has confirmed the page or article title
+     *
+     * @param string $page_title
+     * @param string $installation_name
+     * @throws \Exception
+     * @return boolean
+     */
     public function hasInstallationNameConfirmedTitle($page_title, $installation_name)
     {
         try {
