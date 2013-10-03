@@ -10,26 +10,12 @@
 {% extends getTemplateFile('@phpManufaktur/Basic/Template', 'kitcommand/iframe.body.twig') %}
 {% block stylesheet %}
   {{ parent() }}
-  <link rel="stylesheet" type="text/css" href="{{ MANUFAKTUR_URL }}/ConfirmationLog/Template/default/command/confirmation.css" media="screen, projection" />
+  <link rel="stylesheet" type="text/css" href="{{ MANUFAKTUR_URL }}/ConfirmationLog/Template/default/command/report.css" media="screen, projection" />
 {% endblock stylesheet %}
 {% block content %}
-  <div id="confirmation">
-    <a name="confirmation"></a>
-    {% if basic.message|length > 0 %}
-      <div class="iframe_content message">{{ basic.message }}</div>
-    {% else %}
-      <div class="iframe_content message">
-        {{ 'Please confirm that you have read the full text above.'|trans }}
-      </div>
-    {% endif %}
-    <form action="{{ FRAMEWORK_URL }}/confirmationlog/dialog/check?pid={{ basic.pid }}" method="post" {{ form_enctype(form) }}>
-      {{ form_widget(form) }}
-      <div>
-        <label for="submit">&nbsp;</label>
-        <input type="submit" name="submit" />
-      </div>
-      <div class="clear"></div>
-    </form>
+  <div id="report">
+    {{ parent() }}
+    {% include '@phpManufaktur/ConfirmationLog/Template/default/backend/missing.table.twig' %}
   </div>
 {% endblock %}  
   
