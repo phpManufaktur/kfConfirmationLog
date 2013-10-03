@@ -386,4 +386,45 @@ EOD;
         }
     }
 
+    /**
+     * Select all records with the status 'PENDING'
+     *
+     * @throws \Exception
+     * @return multitype:unknown
+     */
+    public function selectPendings()
+    {
+        try {
+            $SQL = "SELECT * FROM `".self::$table_name."` WHERE `status`='PENDING'";
+            $results = $this->app['db']->fetchAll($SQL);
+            $pendings = array();
+            foreach ($results as $key => $value) {
+                $pendings[$key] = (is_string($value)) ? $this->app['utils']->unsanitizeText($value) : $value;
+            }
+            return $pendings;
+        } catch (\Doctrine\DBAL\DBALException $e) {
+            throw new \Exception($e);
+        }
+    }
+
+    /**
+     * Update a confirmation record
+     * @param integer $id
+     * @param array $data
+     * @throws \Exception
+     */
+    public function update($id, $data)
+    {
+        try {
+            $update = array();
+            foreach ($data as $key => $value) {
+                if (($key == 'id') || ($key == 'timestamp')) continue;
+                $update[$key] = (is_string($value)) ? $this->app['utils']->sanitizeText($value) : $value;
+            }
+            $this->app['db']->update(self::$table_name, $update, array('id' => $id));
+        } catch (\Doctrine\DBAL\DBALException $e) {
+            throw new \Exception($e);
+        }
+    }
+
 }
