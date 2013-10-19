@@ -317,12 +317,7 @@ EOD;
         try {
             $SQL = "SELECT MAX(`modified_when`) FROM `".self::$table_name."`";
             $date = $this->app['db']->fetchColumn($SQL);
-            if (is_null($date)) {
-                // table is probably empty ...
-                $this->app['monolog']->addDebug("$SQL return NULL, nothing to do!", array(__METHOD__, __LINE__));
-                return true;
-            }
-            $modified_when = strtotime($date);
+            $modified_when = intval(strtotime($date));
 
             // check the pages
             $SQL = "SELECT MAX(`modified_when`) FROM `".CMS_TABLE_PREFIX."pages`";
