@@ -29,6 +29,13 @@
   "require":{
     "framework": {
       "release":"0.26"
+    },
+    "extension": {
+        "phpmanufaktur":{
+            "Basic":{
+                "release":"0.52"
+            }
+        }
     }
   },
   "setup":{
