@@ -3,13 +3,24 @@
   "guid":"9CDF6A24-9731-43C5-8ED2-BAD2C9B4482D",
   "category":"extension",
   "group":"phpManufaktur",
-  "vendor":"phpManufaktur",
+  "vendor":{
+      "name":"phpManufaktur",
+      "url":"https:\/\/phpmanufaktur.de",
+      "mail":"team@phpmanufaktur.de",
+      "address":{
+          "street":"Stockholmer Straße 31",
+          "zip":"13359",
+          "city":"Berlin",
+          "country":"Germany"
+      },
+      "phone":"+49 30 68813647"
+  },
   "type":"framework",
   "path":"\/extension\/phpmanufaktur\/phpManufaktur\/ConfirmationLog",
   "namespace":"phpManufaktur\\Basic",
   "release":{
-    "number":"0.20",
-    "date":"2013-10-20",
+    "number":"0.21",
+    "date":"2013-11-05",
     "status":"beta"
   },
   "description": {

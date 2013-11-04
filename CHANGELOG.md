@@ -3,6 +3,10 @@
 (c) 2012, 2013 phpManufaktur by Ralf Hertsch<br/>
 MIT License (MIT) - <http://www.opensource.org/licenses/MIT>
 
+**0.21** - 2013-11-04
+
+* added support for additional vendor information
+
 **0.20** - 2013-10-20
 
 * function `parseFileForConstants()`  is moved to `$app['utils']` and therefore removed from `Confirmation.php`
