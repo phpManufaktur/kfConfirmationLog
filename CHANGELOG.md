@@ -3,6 +3,11 @@
 (c) 2012, 2013 phpManufaktur by Ralf Hertsch<br/>
 MIT License (MIT) - <http://www.opensource.org/licenses/MIT>
 
+**0.23** - 2014-01-21
+
+* changed 'About' Dialog
+* fixed a typo in namespace which cause a runtime error
+
 **0.22** - 2013-11-09
 
 * changed license information and handling in `extension.json`
