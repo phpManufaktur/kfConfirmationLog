@@ -33,7 +33,7 @@ $command->post('/confirmation',
 $app->get('/confirmationlog/dialog',
     'phpManufaktur\ConfirmationLog\Control\kitCommand\Confirmation::controllerDialog');
 $app->post('/confirmationlog/dialog/check',
-    'phpManufaktur\ConfirmationLog\Control\kitcommand\Confirmation::controllerCheckConfirmation');
+    'phpManufaktur\ConfirmationLog\Control\kitCommand\Confirmation::controllerCheckConfirmation');
 
 // kitCommand ~~ ConfirmationReport ~~
 $command->post('confirmationreport',
