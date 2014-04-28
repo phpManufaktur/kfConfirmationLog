@@ -11,11 +11,6 @@
 
 use phpManufaktur\Basic\Control\CMS\EmbeddedAdministration;
 
-// scan the /Locale directory and add all available languages
-$app['utils']->addLanguageFiles(MANUFAKTUR_PATH.'/ConfirmationLog/Data/Locale');
-// scan the /Locale/Custom directory and add all available languages
-$app['utils']->addLanguageFiles(MANUFAKTUR_PATH.'/ConfirmationLog/Data/Locale/Custom');
-
 // setup, update and uninstall
 $admin->get('/confirmationlog/setup',
     'phpManufaktur\ConfirmationLog\Data\Setup\Setup::controllerSetup');
