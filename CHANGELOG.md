@@ -3,6 +3,10 @@
 (c) 2012, 2013 phpManufaktur by Ralf Hertsch<br/>
 MIT License (MIT) - <http://www.opensource.org/licenses/MIT>
 
+**0.24** - 2014-05-07
+
+* all language files are now loaded by the BASIC extension
+
 **0.23** - 2014-01-21
 
 * changed 'About' Dialog

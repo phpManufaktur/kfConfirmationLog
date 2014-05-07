@@ -19,8 +19,8 @@
   "path":"\/extension\/phpmanufaktur\/phpManufaktur\/ConfirmationLog",
   "namespace":"phpManufaktur\\Basic",
   "release":{
-    "number":"0.23",
-    "date":"2014-01-21",
+    "number":"0.24",
+    "date":"2014-05-07",
     "status":"beta"
   },
   "description": {
@@ -39,12 +39,12 @@
   },
   "require":{
     "framework": {
-      "release":"0.26"
+      "release":"0.27"
     },
     "extension": {
         "phpmanufaktur":{
             "Basic":{
-                "release":"0.52"
+                "release":"0.92"
             }
         }
     }
