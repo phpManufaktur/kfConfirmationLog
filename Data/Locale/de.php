@@ -56,8 +56,6 @@ return array(
     'Import from table `mod_confirmation_log` (previous version)'
         => 'Import von Tabelle `mod_confirmation_log` (Vorgänger)',
 
-    'name'
-        => 'Bezeichnung',
     'No results for filter ID %filter_id%.'
         => 'Keine Ergebnisse für den Filter mit der ID %filter_id%!',
     'No results for the group %group%!'
