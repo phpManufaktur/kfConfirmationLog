@@ -20,51 +20,51 @@
 {% extends getTemplateFile(template_namespace, template_file) %}
 
 {% block content %}
-  
+
   {% if (message|length > 0) %}
     <div class="message">
       <div class="message item">
         {{ message }}
-      </div>    
-    </div>  
+      </div>
+    </div>
   {% endif %}
 
   {% if confirmation.id is defined %}
-    <div class="detail_label">{{ 'id'|trans }}</div>
+    <div class="detail_label">{{ 'id'|humanize|trans }}</div>
     <div class="detail_value">{{ '%06d'|format(confirmation.id) }}</div>
-    <div class="detail_label">{{ 'page_id'|trans }}</div>
+    <div class="detail_label">{{ 'page_id'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.page_id }}</div>
-    <div class="detail_label">{{ 'page_type'|trans }}</div>
+    <div class="detail_label">{{ 'page_type'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.page_type|trans }}</div>
-    <div class="detail_label">{{ 'second_id'|trans }}</div>
+    <div class="detail_label">{{ 'second_id'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.second_id }}</div>
-    <div class="detail_label">{{ 'installation_name'|trans }}</div>
+    <div class="detail_label">{{ 'installation_name'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.installation_name }}</div>
-    <div class="detail_label">{{ 'user_name'|trans }}</div>
+    <div class="detail_label">{{ 'user_name'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.user_name }}</div>
-    <div class="detail_label">{{ 'user_email'|trans }}</div>
+    <div class="detail_label">{{ 'user_email'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.user_email }}</div>
-    <div class="detail_label">{{ 'page_title'|trans }}</div>
+    <div class="detail_label">{{ 'page_title'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.page_title }}</div>
-    <div class="detail_label">{{ 'page_url'|trans }}</div>
+    <div class="detail_label">{{ 'page_url'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.page_url }}</div>
-    <div class="detail_label">{{ 'typed_name'|trans }}</div>
+    <div class="detail_label">{{ 'typed_name'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.typed_name }}</div>
-    <div class="detail_label">{{ 'typed_email'|trans }}</div>
+    <div class="detail_label">{{ 'typed_email'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.typed_email }}</div>
-    <div class="detail_label">{{ 'confirmed_at'|trans }}</div>
+    <div class="detail_label">{{ 'confirmed_at'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.confirmed_at }}</div>
-    <div class="detail_label">{{ 'received_at'|trans }}</div>
+    <div class="detail_label">{{ 'received_at'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.received_at }}</div>
-    <div class="detail_label">{{ 'time_on_page'|trans }}</div>
+    <div class="detail_label">{{ 'time_on_page'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.time_on_page }}</div>
-    <div class="detail_label">{{ 'checksum'|trans }}</div>
+    <div class="detail_label">{{ 'checksum'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.checksum }}</div>
-    <div class="detail_label">{{ 'transmitted_at'|trans }}</div>
+    <div class="detail_label">{{ 'transmitted_at'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.transmitted_at }}</div>
-    <div class="detail_label">{{ 'status'|trans }}</div>
+    <div class="detail_label">{{ 'status'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.status|trans }}</div>
-    <div class="detail_label">{{ 'timestamp'|trans }}</div>
+    <div class="detail_label">{{ 'timestamp'|humanize|trans }}</div>
     <div class="detail_value">{{ confirmation.timestamp }}</div>
     <div class="clear"></div>
   {% endif %}

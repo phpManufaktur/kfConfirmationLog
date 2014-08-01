@@ -69,26 +69,26 @@ class Backend {
     {
         $toolbar_array = array(
             'list' => array(
-                'text' => 'List',
-                'hint' => 'List of confirmations',
+                'text' => $this->app['translator']->trans('List'),
+                'hint' => $this->app['translator']->trans('List of confirmations'),
                 'link' => sprintf('%s%s%s', self::$link, strpos(self::$link, '?') ? '&' : '?', 'action=list&usage='.self::$usage),
                 'active' => ($active == 'list')
             ),
             'report' => array(
-                'text' => 'Report',
-                'hint' => 'Different reports to the confirmations',
+                'text' => $this->app['translator']->trans('Report'),
+                'hint' => $this->app['translator']->trans('Different reports to the confirmations'),
                 'link' => sprintf('%s%s%s', self::$link, strpos(self::$link, '?') ? '&' : '?', 'action=report&usage='.self::$usage),
                 'active' => ($active == 'report')
             ),
             'import' => array(
-                'text' => 'Import',
-                'hint' => 'Import of data records',
+                'text' => $this->app['translator']->trans('Import'),
+                'hint' => $this->app['translator']->trans('Import of data records'),
                 'link' => sprintf('%s%s%s', self::$link, strpos(self::$link, '?') ? '&' : '?', 'action=import&usage='.self::$usage),
                 'active' => ($active == 'import')
             ),
             'about' => array(
-                'text' => 'About',
-                'hint' => 'About the ConfirmationLog',
+                'text' => $this->app['translator']->trans('About'),
+                'hint' => $this->app['translator']->trans('About the ConfirmationLog'),
                 'link' => sprintf('%s%s%s', self::$link, strpos(self::$link, '?') ? '&' : '?', '&action=about&usage='.self::$usage),
                 'active' => ($active == 'about')
             )

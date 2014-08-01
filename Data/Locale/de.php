@@ -34,7 +34,7 @@ return array(
         => 'Anklicken um die Spalte absteigend zu sortieren',
     'Confirm'
         => 'Bestätigen',
-    'confirmed_at'
+    'Confirmed at'
         => 'Bestätigt am',
 
     'For the following installations are missing one or more confirmations.'
@@ -47,9 +47,9 @@ return array(
         => 'Ich habe den obigen Text gelesen',
     'id'
         => 'ID',
-    'installation_name'
+    'Installation name'
         => 'Installation',
-    'installation_names'
+    'Installation names'
         => 'Installationen',
     'Imported %added_records% records, skipped %skipped_records% records which already exists. Please check the logfile for further information.'
         => 'Es wurden %added_records% Datensätze importiert, %skipped_records% bereits vorhandene Datensätze wurden übersprungen.<br />Bitte kontrollieren Sie die Protokolldatei für detailierte Informationen.',
@@ -63,17 +63,17 @@ return array(
     'not available'
         => 'nicht verfügbar',
 
-    'page_id'
+    'Page id'
         => 'PAGE ID',
-    'page_title'
+    'Page title'
         => 'Seitentitel',
-    'page_type'
+    'Page type'
         => 'Seiten Typ',
-    'page_url'
+    'Page url'
         => 'Seiten URL',
-    'PENDING'
+    'Pending'
         => 'Ausstehend',
-    'person_name'
+    'Person name'
         => 'Name',
     'Persons: %group_name%, group by: %group_by%'
         => 'Personen Gruppe: %group_name%, Gruppieren nach: %group_by%',
@@ -84,16 +84,16 @@ return array(
     'Please select the import you wish to perform.'
         => 'Bitte wählen Sie den gewünschten Import aus, der durchgeführt werden soll.',
 
-    'received_at'
+    'Received at'
         => 'Erhaltem am',
 
-    'second_id'
+    'Second id'
         => 'Sekundäre ID',
     'Select'
         => 'Auswählen',
     'status'
         => 'Status',
-    'SUBMITTED'
+    'Submitted'
         => 'Übermittelt',
 
     'Thank you for the confirmation!'
@@ -116,22 +116,22 @@ return array(
         => 'Es existieren keine Installationsnamen in den Datensätzen, die für eine Auswertung verwendet werden können!',
     'There exists no page titles which can be checked for a report!'
         => 'Es sind keine Seitentitel erfasst, für die ein Bericht erstellt werden kann.',
-    'time_on_page'
+    'Time on page'
         => 'Gemessene Zeit',
-    'timestamp'
+    'Timestamp'
         => 'Zeitstempel',
-    'title'
+    'Title'
         => 'Seitentitel',
-    'transmitted_at'
+    'Transmitted at'
         => 'Übermittelt am',
-    'typed_email'
+    'Typed email'
         => 'Angegebene E-Mail',
-    'typed_name'
+    'Typed name'
         => 'Angegebener Name',
 
-    'user_email'
+    'User email'
         => 'Login E-Mail',
-    'user_name'
+    'User name'
         => 'Login Name',
 
     'You have already confirmed this article at %date%.'
