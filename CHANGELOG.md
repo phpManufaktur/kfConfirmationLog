@@ -3,6 +3,13 @@
 (c) 2012, 2013 phpManufaktur by Ralf Hertsch<br/>
 MIT License (MIT) - <http://www.opensource.org/licenses/MIT>
 
+**0.25** - 2014-09-14
+
+* extended translation functions for i18n Editor
+* changed `@link` references
+* updated info URL
+* added URL for the changelog in the CMS Tool
+
 **0.24** - 2014-05-07
 
 * all language files are now loaded by the BASIC extension
